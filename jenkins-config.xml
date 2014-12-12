@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+    <actions/>
+    <description>&lt;a href=&apos;ws/build/pdepend/overview-pyramid.svg&apos;&gt;&lt;img src=&quot;ws/build/pdepend/overview-pyramid.svg&quot; type=&quot;image/svg+xml&quot; /&gt;&lt;/a&gt;&#xd;
+        &lt;a href=&apos;ws/build/pdepend/dependencies.svg&apos;&gt;&lt;img src=&quot;ws/build/pdepend/dependencies.svg&quot; type=&quot;image/svg+xml&quot; /&gt;&lt;/a&gt;</description>
+    <logRotator class="hudson.tasks.LogRotator">
+        <daysToKeep>-1</daysToKeep>
+        <numToKeep>20</numToKeep>
+        <artifactDaysToKeep>-1</artifactDaysToKeep>
+        <artifactNumToKeep>-1</artifactNumToKeep>
+    </logRotator>
+    <keepDependencies>false</keepDependencies>
+    <properties/>
+    <canRoam>true</canRoam>
+    <disabled>false</disabled>
+    <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+    <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+    <triggers>
+        <hudson.triggers.SCMTrigger>
+            <spec>* * * * *</spec>
+            <ignorePostCommitHooks>false</ignorePostCommitHooks>
+        </hudson.triggers.SCMTrigger>
+    </triggers>
+    <concurrentBuild>false</concurrentBuild>
+    <builders>
+        <hudson.tasks.Shell>
+            <command>curl -sS https://getcomposer.org/installer | php
+                php composer.phar install --dev --prefer-dist</command>
+        </hudson.tasks.Shell>
+        <hudson.tasks.Shell>
+            <command>vendor/bin/phpunit -c phpunit.xml.dist</command>
+        </hudson.tasks.Shell>
+        <hudson.tasks.Ant plugin="ant@1.2">
+            <targets>build-parallel</targets>
+        </hudson.tasks.Ant>
+    </builders>
+    <publishers>
+        <hudson.plugins.checkstyle.CheckStylePublisher plugin="checkstyle@3.40">
+            <healthy></healthy>
+            <unHealthy></unHealthy>
+            <thresholdLimit>low</thresholdLimit>
+            <pluginName>[CHECKSTYLE] </pluginName>
+            <defaultEncoding></defaultEncoding>
+            <canRunOnFailed>false</canRunOnFailed>
+            <useStableBuildAsReference>false</useStableBuildAsReference>
+            <useDeltaValues>false</useDeltaValues>
+            <thresholds plugin="analysis-core@1.65">
+                <unstableTotalAll></unstableTotalAll>
+                <unstableTotalHigh></unstableTotalHigh>
+                <unstableTotalNormal></unstableTotalNormal>
+                <unstableTotalLow></unstableTotalLow>
+                <failedTotalAll></failedTotalAll>
+                <failedTotalHigh></failedTotalHigh>
+                <failedTotalNormal></failedTotalNormal>
+                <failedTotalLow></failedTotalLow>
+            </thresholds>
+            <shouldDetectModules>false</shouldDetectModules>
+            <dontComputeNew>true</dontComputeNew>
+            <doNotResolveRelativePaths>false</doNotResolveRelativePaths>
+            <pattern></pattern>
+        </hudson.plugins.checkstyle.CheckStylePublisher>
+        <hudson.plugins.pmd.PmdPublisher plugin="pmd@3.39">
+            <healthy></healthy>
+            <unHealthy></unHealthy>
+            <thresholdLimit>low</thresholdLimit>
+            <pluginName>[PMD] </pluginName>
+            <defaultEncoding></defaultEncoding>
+            <canRunOnFailed>false</canRunOnFailed>
+            <useStableBuildAsReference>false</useStableBuildAsReference>
+            <useDeltaValues>false</useDeltaValues>
+            <thresholds plugin="analysis-core@1.65">
+                <unstableTotalAll></unstableTotalAll>
+                <unstableTotalHigh></unstableTotalHigh>in
+                <unstableTotalNormal></unstableTotalNormal>
+                <unstableTotalLow></unstableTotalLow>
+                <failedTotalAll></failedTotalAll>
+                <failedTotalHigh></failedTotalHigh>
+                <failedTotalNormal></failedTotalNormal>
+                <failedTotalLow></failedTotalLow>
+            </thresholds>
+            <shouldDetectModules>false</shouldDetectModules>
+            <dontComputeNew>true</dontComputeNew>
+            <doNotResolveRelativePaths>true</doNotResolveRelativePaths>
+            <pattern></pattern>
+        </hudson.plugins.pmd.PmdPublisher>
+        <hudson.plugins.dry.DryPublisher plugin="dry@2.40">
+            <healthy></healthy>
+            <unHealthy></unHealthy>
+            <thresholdLimit>low</thresholdLimit>
+            <pluginName>[DRY] </pluginName>
+            <defaultEncoding></defaultEncoding>
+            <canRunOnFailed>false</canRunOnFailed>
+            <useStableBuildAsReference>false</useStableBuildAsReference>
+            <useDeltaValues>false</useDeltaValues>
+            <thresholds plugin="analysis-core@1.65">
+                <unstableTotalAll></unstableTotalAll>
+                <unstableTotalHigh></unstableTotalHigh>
+                <unstableTotalNormal></unstableTotalNormal>
+                <unstableTotalLow></unstableTotalLow>
+                <failedTotalAll></failedTotalAll>
+                <failedTotalHigh></failedTotalHigh>
+                <failedTotalNormal></failedTotalNormal>
+                <failedTotalLow></failedTotalLow>
+            </thresholds>
+            <shouldDetectModules>false</shouldDetectModules>
+            <dontComputeNew>true</dontComputeNew>
+            <doNotResolveRelativePaths>false</doNotResolveRelativePaths>
+            <pattern></pattern>
+            <highThreshold>50</highThreshold>
+            <normalThreshold>25</normalThreshold>
+        </hudson.plugins.dry.DryPublisher>
+        <hudson.plugins.analysis.collector.AnalysisPublisher plugin="analysis-collector@1.41">
+            <healthy></healthy>
+            <unHealthy></unHealthy>
+            <thresholdLimit>low</thresholdLimit>
+            <pluginName>[ANALYSIS-COLLECTOR] </pluginName>
+            <defaultEncoding></defaultEncoding>
+            <canRunOnFailed>false</canRunOnFailed>
+            <useStableBuildAsReference>false</useStableBuildAsReference>
+            <useDeltaValues>false</useDeltaValues>
+            <thresholds plugin="analysis-core@1.65">
+                <unstableTotalAll></unstableTotalAll>
+                <unstableTotalHigh></unstableTotalHigh>
+                <unstableTotalNormal></unstableTotalNormal>
+                <unstableTotalLow></unstableTotalLow>
+                <failedTotalAll></failedTotalAll>
+                <failedTotalHigh></failedTotalHigh>
+                <failedTotalNormal></failedTotalNormal>
+                <failedTotalLow></failedTotalLow>
+            </thresholds>
+            <shouldDetectModules>false</shouldDetectModules>
+            <dontComputeNew>true</dontComputeNew>
+            <doNotResolveRelativePaths>true</doNotResolveRelativePaths>
+            <isCheckStyleDeactivated>false</isCheckStyleDeactivated>
+            <isDryDeactivated>false</isDryDeactivated>
+            <isFindBugsDeactivated>false</isFindBugsDeactivated>
+            <isPmdDeactivated>false</isPmdDeactivated>
+            <isOpenTasksDeactivated>true</isOpenTasksDeactivated>
+            <isWarningsDeactivated>true</isWarningsDeactivated>
+        </hudson.plugins.analysis.collector.AnalysisPublisher>
+        <hudson.tasks.JavadocArchiver plugin="javadoc@1.3">
+            <javadocDir>build/api/html/</javadocDir>
+            <keepAll>false</keepAll>
+        </hudson.tasks.JavadocArchiver>
+        <org.jenkinsci.plugins.cloverphp.CloverPHPPublisher plugin="cloverphp@0.3.3">
+            <publishHtmlReport>true</publishHtmlReport>
+            <reportDir>build/coverage/</reportDir>
+            <xmlLocation>build/logs/clover.xml</xmlLocation>
+            <disableArchiving>false</disableArchiving>
+            <healthyTarget>
+                <methodCoverage>70</methodCoverage>
+                <statementCoverage>80</statementCoverage>
+            </healthyTarget>
+            <unhealthyTarget/>
+            <failingTarget/>
+        </org.jenkinsci.plugins.cloverphp.CloverPHPPublisher>
+        <hudson.tasks.junit.JUnitResultArchiver plugin="junit@1.3">
+            <testResults>build/logs/junit.xml</testResults>
+            <keepLongStdio>false</keepLongStdio>
+            <healthScaleFactor>1.0</healthScaleFactor>
+        </hudson.tasks.junit.JUnitResultArchiver>
+    </publishers>
+    <buildWrappers/>
+</project>

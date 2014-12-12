@@ -1,0 +1,29 @@
+{
+  "name": "vendor/name-of-project",
+  "description": "",
+  "type": "typo3-cms-extension",
+  "version": "0.1",
+  "autoload": {
+    "psr-4": {
+      "CedricZiel\\QaSkel\\": "Classes/"
+    },
+    "classmap": [
+      "Tests/",
+      "vendor/typo3/cms/typo3/sysext"
+    ]
+  },
+  "replace": {
+    "typo3/cms-composer-installers": "*"
+  },
+  "require-dev": {
+    "typo3/cms": "6.2.8",
+    "phpunit/phpunit": "~4.4.0",
+    "mikey179/vfsStream": "~1.3.0",
+    "phpmd/phpmd" : "@stable",
+    "phploc/phploc": "~2.0.6",
+    "sebastian/phpcpd": "~2.0.1",
+    "squizlabs/php_codesniffer": "~2.0.0",
+    "theseer/phpdox": "0.7.0",
+    "fluidtypo3/coding-standards": "dev-master"
+  }
+}
