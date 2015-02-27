@@ -17,6 +17,11 @@ You need to install the ``ant`` build tool (which in turn requires Java).
 * Install composer dependencies ``composer install``
 * Execute the build ``ant build``
 
+## A word on error handling
+
+Errors are handled gracefully. What this basically means, is that you would need to adjust the ant file [build.xml](build.xml)
+to stop the build upon an error. Unless you add ``failonerror="1"`` to one of the ``exec`` directives, the build will always pass.
+
 ## Jenkins configuration
 
 Create a Jenkins ``freestyle`` project. Now in your Jenkins home directory, replace the ``config.xml`` with the contained ``jenkins-config.xml``, reload the configuration and adjust the build settings to your liking. Done.
