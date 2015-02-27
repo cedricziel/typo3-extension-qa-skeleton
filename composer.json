@@ -16,7 +16,7 @@
     "typo3/cms-composer-installers": "*"
   },
   "require-dev": {
-    "typo3/cms": "6.2.9",
+    "typo3/cms": "6.2.10",
     "phpunit/phpunit": "~4.4.0",
     "mikey179/vfsStream": "~1.3.0",
     "phpmd/phpmd": "@stable",
@@ -31,15 +31,15 @@
       "type": "package",
       "package": {
         "name": "typo3/cms",
-        "version": "6.2.9",
+        "version": "6.2.10",
         "dist": {
-          "url": "https://github.com/TYPO3/TYPO3.CMS/archive/6.2.9.zip",
+          "url": "https://github.com/TYPO3/TYPO3.CMS/archive/6.2.10.zip",
           "type": "zip"
         },
         "source": {
           "url": "https://github.com/TYPO3/TYPO3.CMS.git",
           "type": "git",
-          "reference": "6.2.9"
+          "reference": "TYPO3_6-2-10"
         }
       }
     }
