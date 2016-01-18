@@ -19,7 +19,7 @@
     "php": ">=5.5.0"
   },
   "require-dev": {
-    "typo3/cms": "7.1",
+    "typo3/cms": "7.6",
     "phpunit/phpunit": "~4.4.0",
     "mikey179/vfsStream": "~1.3.0",
     "phpmd/phpmd" : "@stable",
@@ -28,23 +28,5 @@
     "squizlabs/php_codesniffer": "~2.0.0",
     "theseer/phpdox": "0.7.0",
     "fluidtypo3/coding-standards": "dev-master"
-  },
-  "repositories": [
-    {
-      "type": "package",
-      "package": {
-        "name": "typo3/cms",
-        "version": "7.1.0",
-        "dist": {
-          "url": "https://github.com/TYPO3/TYPO3.CMS/archive/TYPO3_7-1-0.zip",
-          "type": "zip"
-        },
-        "source": {
-          "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-          "type": "git",
-          "reference": "TYPO3_7-1-0"
-        }
-      }
-    }
-  ]
+  }
 }
