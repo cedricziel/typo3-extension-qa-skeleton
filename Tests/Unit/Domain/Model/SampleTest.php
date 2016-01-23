@@ -35,45 +35,46 @@ use CedricZiel\QaSkel\Domain\Model\Sample;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  */
-class SampleTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class SampleTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
 
-	/**
-	 * @var \CedricZiel\QaSkel\Domain\Model\Sample
-	 */
-	protected $subject = NULL;
+    /**
+     * @var \CedricZiel\QaSkel\Domain\Model\Sample
+     */
+    protected $subject = null;
 
-	protected function setUp() {
+    protected function setUp()
+    {
+        $this->subject = new Sample();
+    }
 
-		$this->subject = new Sample();
-	}
+    protected function tearDown()
+    {
+        unset($this->subject);
+    }
 
-	protected function tearDown() {
+    /**
+     * @test
+     */
+    public function getTitleReturnsInitialValueForString()
+    {
+        $this->assertSame(
+            '',
+            $this->subject->getTitle()
+        );
+    }
 
-		unset($this->subject);
-	}
+    /**
+     * @test
+     */
+    public function setTitleForStringSetsTitle()
+    {
+        $this->subject->setTitle('Conceived at T3CON10');
 
-	/**
-	 * @test
-	 */
-	public function getTitleReturnsInitialValueForString() {
-
-		$this->assertSame(
-			'',
-			$this->subject->getTitle()
-		);
-	}
-
-	/**
-	 * @test
-	 */
-	public function setTitleForStringSetsTitle() {
-
-		$this->subject->setTitle('Conceived at T3CON10');
-
-		$this->assertAttributeEquals(
-			'Conceived at T3CON10',
-			'title',
-			$this->subject
-		);
-	}
+        $this->assertAttributeEquals(
+            'Conceived at T3CON10',
+            'title',
+            $this->subject
+        );
+    }
 }

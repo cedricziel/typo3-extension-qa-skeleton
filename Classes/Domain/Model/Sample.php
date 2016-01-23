@@ -32,28 +32,28 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
  * Class Sample
- * @package CedricZiel\QaSkel\Domain\Model\Sample
  */
-class Sample extends AbstractEntity {
+class Sample extends AbstractEntity
+{
 
-	/**
-	 * @var string
-	 */
-	protected $title = '';
+    /**
+     * @var string
+     */
+    protected $title = '';
 
-	/**
-	 * @return string
-	 */
-	public function getTitle() {
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-		return $this->title;
-	}
-
-	/**
-	 * @param string $title
-	 */
-	public function setTitle($title) {
-
-		$this->title = $title;
-	}
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 }
